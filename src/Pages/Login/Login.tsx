@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Header, Segment, Grid, Image } from 'semantic-ui-react'
+import { createGlobalStyle } from 'styled-components'
 import { Container, Box } from './styles'
 import { useAuth } from '../../Hooks'
 import api, { setAuth } from '../../Services/Api'
 import { useHistory, useLocation } from 'react-router-dom'
+import logo from '../../Assets/logo-extended.svg'
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #2185d0;
+    font-family: Lato, sans-serif;
+    min-height: 100vh;
+  }
+`
 
 const LoginPage = () => {
   const [email, setEmail] = useState<string>('')
@@ -39,10 +55,12 @@ const LoginPage = () => {
 
   return (
     <Container textAlign="center" verticalAlign="middle">
+      <GlobalStyle />
       <Box>
+        <Image src={logo} size="medium" centered />
         <Segment>
           <Header as="h2" textAlign="center">
-            Art Admin
+            Sign In
           </Header>
           <Form size="large" onSubmit={handleSubmit}>
             <Form.Input
@@ -65,11 +83,10 @@ const LoginPage = () => {
               value={password}
               onChange={handleChange}
             />
-            <Button color="blue" fluid size="large">
-              Log-in
+            <Button inverted color="blue" fluid size="large">
+              Send
             </Button>
           </Form>
-          <Message>New here?</Message>
         </Segment>
       </Box>
     </Container>

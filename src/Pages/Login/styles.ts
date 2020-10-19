@@ -6,5 +6,6 @@ export const Container = styled(Grid)`
 `
 
 export const Box = styled(Grid.Column)`
-  max-width: 450px
+  max-width: 450px;
+  text-align: center !important;
 `

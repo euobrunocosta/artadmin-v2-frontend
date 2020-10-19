@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Container, Dropdown } from 'semantic-ui-react'
+import { Menu, Container, Dropdown, Image } from 'semantic-ui-react'
 import { useAuth } from '../../Hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCrown } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
+import logo from '../../Assets/logo-extended.svg'
 
 const Icon = styled(FontAwesomeIcon)`
   margin-right: 9px;
@@ -17,7 +18,7 @@ const Navbar = () => {
     <Menu color={user?.isMaster ? 'orange' : 'blue'} inverted>
       <Container>
         <Menu.Item as={Link} to="/" header>
-          ArtAdmin
+          <Image size="small" src={logo} />
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item as={Link} to="/orders">
