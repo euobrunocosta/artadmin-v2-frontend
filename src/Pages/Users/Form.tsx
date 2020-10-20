@@ -54,7 +54,7 @@ const FormComponent = (props: TProps) => {
     const response = await api.get('/tenants')
     if (!response) return
     const list: TSelectOptions[] = []
-    response.forEach((tenant: TTenant) => {
+    response.data.forEach((tenant: TTenant) => {
       list.push({
         key: tenant._id,
         value: tenant._id,

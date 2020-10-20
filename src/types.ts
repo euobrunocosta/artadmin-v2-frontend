@@ -261,7 +261,7 @@ declare global {
     options: TSelectOptions[]
   }
 
-  type TPrintPage = 'report' | 'budget'
+  type TPrintPage = 'report' | 'budget' | 'file'
 
 }
 

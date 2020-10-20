@@ -189,6 +189,8 @@ const ListPage = () => {
     if (type === 'report') history.push(`/items/print/${params.orderId}`)
     if (type === 'budget')
       history.push(`/items/print/${params.orderId}/budget/true`)
+    if (type === 'file')
+      history.push(`/items/print/${params.orderId}/file/true`)
   }
 
   const closeRemoveSelectedConfirm = () => {

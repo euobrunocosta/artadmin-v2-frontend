@@ -97,6 +97,11 @@ const Routes = () => {
           exact
           component={ItemsPrintPage}
         />
+        <PrintPrivateRoute
+          path="/items/print/:orderId/file/:file"
+          exact
+          component={ItemsPrintPage}
+        />
         <PrivateRoute
           path="/materials/:itemId"
           exact

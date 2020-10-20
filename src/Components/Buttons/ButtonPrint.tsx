@@ -12,9 +12,14 @@ const ButtonPrint = (props: TProps) => {
     onClickGoTo('report')
   }
 
+  const onClickGoToFile = () => {
+    onClickGoTo('file')
+  }
+
   const onClickGoToBudget = () => {
     onClickGoTo('budget')
   }
+
   return (
     <Dropdown
       style={{ marginRight: 0 }}
@@ -30,6 +35,9 @@ const ButtonPrint = (props: TProps) => {
       <Dropdown.Menu>
         <Dropdown.Item>
           <span onClick={onClickGoToReport}>Print Report</span>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <span onClick={onClickGoToFile}>Print File</span>
         </Dropdown.Item>
         <Dropdown.Item>
           <span onClick={onClickGoToBudget}>Print Budget</span>

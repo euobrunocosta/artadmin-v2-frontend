@@ -112,7 +112,7 @@ const Payments = (props: TProps) => {
   )
 }
 
-const OrderAndBay = (props: TProps) => {
+const OrderAndBaby = (props: TProps) => {
   const { orderId } = props
 
   const [order, setOrder] = useState<TOrder>()
@@ -188,11 +188,11 @@ const OrderAndBay = (props: TProps) => {
 
 type TItemsProps = {
   orderId: string
-  isBudgetRequest: boolean
+  showProfit: boolean
 }
 
 const Items = (props: TItemsProps) => {
-  const { orderId, isBudgetRequest } = props
+  const { orderId, showProfit } = props
 
   const [items, setItems] = useState<TItem[]>([])
   const [isItemsLoading, setIsItemsLoading] = useState(false)
@@ -244,7 +244,7 @@ const Items = (props: TItemsProps) => {
           <Table.Row>
             <Table.HeaderCell>Title</Table.HeaderCell>
             <Table.HeaderCell>Description</Table.HeaderCell>
-            {isBudgetRequest && (
+            {showProfit && (
               <>
                 <Table.HeaderCell>Materials</Table.HeaderCell>
                 <Table.HeaderCell>Labor</Table.HeaderCell>
@@ -253,7 +253,7 @@ const Items = (props: TItemsProps) => {
             <Table.HeaderCell>Price</Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
-            {isBudgetRequest && <Table.HeaderCell>Profit</Table.HeaderCell>}
+            {showProfit && <Table.HeaderCell>Profit</Table.HeaderCell>}
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -271,7 +271,7 @@ const Items = (props: TItemsProps) => {
                 <Table.Row key={index}>
                   <Table.Cell>{item.title}</Table.Cell>
                   <Table.Cell>{item.description}</Table.Cell>
-                  {isBudgetRequest && (
+                  {showProfit && (
                     <>
                       <Table.Cell>
                         {formatNumberToCurrency(item.materials)}
@@ -284,7 +284,7 @@ const Items = (props: TItemsProps) => {
                   <Table.Cell>{formatNumberToCurrency(item.price)}</Table.Cell>
                   <Table.Cell>{formatNumber(item.quantity)}</Table.Cell>
                   <Table.Cell>{formatNumberToCurrency(total)}</Table.Cell>
-                  {isBudgetRequest && (
+                  {showProfit && (
                     <Table.Cell>
                       <ProfitWrapper>
                         {formatNumberToCurrency(valueProfit)}
@@ -302,7 +302,7 @@ const Items = (props: TItemsProps) => {
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan={2}></Table.HeaderCell>
-            {isBudgetRequest && (
+            {showProfit && (
               <>
                 <Table.HeaderCell>
                   <strong>{formatNumberToCurrency(totals.materials)}</strong>
@@ -319,7 +319,7 @@ const Items = (props: TItemsProps) => {
             <Table.HeaderCell>
               <strong>{formatNumberToCurrency(totals.total)}</strong>
             </Table.HeaderCell>
-            {isBudgetRequest && (
+            {showProfit && (
               <Table.HeaderCell>
                 <ProfitWrapper>
                   <strong>{formatNumberToCurrency(totals.profit)}</strong>
@@ -335,12 +335,14 @@ const Items = (props: TItemsProps) => {
 }
 
 const PrintPage = () => {
-  const params = useParams<{ orderId: string; budget: string }>()
+  const params = useParams<{ orderId: string; budget: string; file: string }>()
+
+  const showProfit = !(Boolean(params.budget) || Boolean(params.file))
 
   return (
     <Container style={{ backgroundColor: 'white' }}>
-      {!params.budget && <OrderAndBay orderId={params.orderId} />}
-      <Items orderId={params.orderId} isBudgetRequest={!params.budget} />
+      {!params.budget && <OrderAndBaby orderId={params.orderId} />}
+      <Items orderId={params.orderId} showProfit={showProfit} />
       {!params.budget && <Payments orderId={params.orderId} />}
     </Container>
   )
