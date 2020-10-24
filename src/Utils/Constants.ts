@@ -1,3 +1,5 @@
+import { SemanticCOLORS, SemanticICONS } from 'semantic-ui-react'
+
 export enum Messages {
   genericError = 'Something went wrong. Check your data and try again!',
 }
@@ -12,15 +14,49 @@ export enum DateTimeFormats {
   ui = 'DD/MM/YYYY HH:II:SS'
 }
 
-export enum orderStatuses {
-  aguardandoFechamento,
-  pedidoFechado,
-  emAndamento,
-  finalizado,
-  entregue,
-  desistencia,
+type TOrderStatusesInfo = {
+  color: SemanticCOLORS
+  icon: SemanticICONS
+  title: string
 }
 
+export const orderStatusesInfo: TOrderStatusesInfo[] = [
+  {
+    color: 'yellow',
+    icon: 'time',
+    title: 'SOLIC. ORÇAMENTO',
+  },
+  {
+    color: 'orange',
+    icon: 'dollar',
+    title: 'PEDIDO FECHADO',
+  },
+  {
+    color: 'olive',
+    icon: 'cut',
+    title: 'EM ANDAMENTO',
+  },
+  {
+    color: 'green',
+    icon: 'boxes',
+    title: 'FINALIZADO',
+  },
+  {
+    color: 'blue',
+    icon: 'truck',
+    title: 'ENTREGUE',
+  },
+  {
+    color: 'red',
+    icon: 'ban',
+    title: 'DESISTÊNCIA',
+  },
+  {
+    color: 'grey',
+    icon: 'time',
+    title: 'INDEFINIDO',
+  }
+]
 
 export const SelectOrderStatuses = [
   {
