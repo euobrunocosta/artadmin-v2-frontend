@@ -30,7 +30,7 @@ declare global {
     email: string
     isMaster: boolean
     tenant: TTenant
-    token: string
+    token?: string
     enabled: boolean
     user: TUser
     createdAt: Date

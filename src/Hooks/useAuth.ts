@@ -41,6 +41,7 @@ function useAuthContext() {
   }, [])
 
   const saveUserData = (data: TUser) => {
+    if (!data.token) return
     const token = data.token
     setUserToken(token)
     delete data.token

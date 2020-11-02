@@ -7,7 +7,7 @@ import {
   SelectField,
   DateField,
 } from '../../Components'
-import { SelectOrderStatuses } from '../../Utils/Constants'
+import { SelectOrderStatus } from '../../Utils/Constants'
 import { formatDateToUI } from '../../Utils/Helpers'
 import api from '../../Services/Api'
 
@@ -152,7 +152,7 @@ const FormComponent = (props: TProps) => {
         <SelectField
           label="Status"
           name="status"
-          options={SelectOrderStatuses}
+          options={SelectOrderStatus}
           value={formik.values.status}
           onChange={(e, data: DropdownProps) =>
             formik.setFieldValue('status', data.value)

@@ -12,6 +12,7 @@ import {
   ButtonDelete,
   TableHeader,
   PageTitle,
+  ButtonSearch,
 } from '../../Components'
 import { parseDate } from '../../Utils/Helpers'
 
@@ -26,7 +27,7 @@ const customOptions = {
       column: 'gender',
     },
     {
-      title: 'NaBirthdayme',
+      title: 'Birthday',
       column: 'birthday',
     },
   ],
@@ -205,6 +206,7 @@ const ListPage = () => {
               tip="Remove Selected"
             />
           )}
+          <ButtonSearch search={search} setSearch={setSearch} />
           <ModalContainer
             title={`New ${customOptions.item}`}
             showModal={showAddModal}
@@ -237,8 +239,8 @@ const ListPage = () => {
               )
             })
           ) : (
-              <EmptyList isLoading={isLoading} colSpan={columnCount} />
-            )}
+            <EmptyList isLoading={isLoading} colSpan={columnCount} />
+          )}
         </Table.Body>
       </Table>
     </>

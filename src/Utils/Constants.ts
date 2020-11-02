@@ -58,7 +58,7 @@ export const orderStatusesInfo: TOrderStatusesInfo[] = [
   }
 ]
 
-export const SelectOrderStatuses = [
+export const SelectOrderStatus = [
   {
     key: '0',
     value: '0',
