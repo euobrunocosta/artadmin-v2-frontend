@@ -33,7 +33,7 @@ const ImportItem = (props: TProps) => {
   }, [])
 
   const getOrders = async () => {
-    const response = await api.get('/orders')
+    const response = await api.get('/orders', { limit: 30 })
     if (!response) return
     const list: TSelectOptions[] = []
     response.data.forEach((order: TOrder) => {
