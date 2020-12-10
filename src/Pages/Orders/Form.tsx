@@ -62,7 +62,7 @@ const FormComponent = (props: TProps) => {
   }
 
   const getClients = async () => {
-    const response = await api.get('/clients')
+    const response = await api.get('/clients', { limit: 100 })
     if (!response) return
     const list: TSelectOptions[] = []
     response.data.forEach((client: TClient) => {
